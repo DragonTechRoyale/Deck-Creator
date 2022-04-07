@@ -1,4 +1,4 @@
-import genanki # There's a wild story that in earlier commit of this code on a private repo this app could generate Anki decks... 👀
+import genanki # There's a wild story that in earlier commits of this code on a private repo this app could generate Anki decks 👀
 import pathlib;
 import os
 import urllib.request
