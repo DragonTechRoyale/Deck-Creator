@@ -28,6 +28,7 @@ class Translate():
         self.browser = browser  
         if hide_window:
             os.environ['MOZ_HEADLESS'] = '1'  # hides the Firefox window
+        console.info(f"Translate - is file: {os.path.isfile(self.__GECKODRIVER_PATH)}")
         if not os.path.isfile(self.__GECKODRIVER_PATH):
             console.warn("Warning: geckodriver is not in directory: downloading to this directory")
             download_link = ""
@@ -49,7 +50,7 @@ class Translate():
                 return
             if platform.system() == 'Darwin' or platform.system() == 'Linux':
                 os.system(f"""
-                          cd {os.getcwd()}/required_files
+                          cd {os.getcwd()}/website/required_files
                           wget {download_link} 
                           tar -xf {download_link.split('/')[-1]}
                           rm {download_link.split('/')[-1]}
@@ -78,7 +79,7 @@ class Translate():
         translation_url = f"https://translate.google.com/?sl={self.translate_codes(TL)}&tl={self.translate_codes(NL)}&text={word}%0A&op=translate"
         try:
             self.browser.get(translation_url)
-            self.browser.implicitly_wait(2) # gives an implicit wait for 0.5 seconds
+            self.browser.implicitly_wait(2) 
             translated_text_element = WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.XPATH, self.__TRANSLATED_TEXT_XPATH)))
             traslated_word = translated_text_element.text
             return traslated_word
