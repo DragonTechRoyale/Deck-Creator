@@ -1,0 +1,26 @@
+h2 {
+    color :coral;
+}
+
+#titles {
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    width: 100; // Any width will be fine
+    height: 4: // Any height will be fine
+}
+
+#title {
+    position: fixed;
+    top: 10%;
+}
+
+#readProfile {
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    width: 100; // Any width will be fine
+    height: 4: // Any height will be fine
+}

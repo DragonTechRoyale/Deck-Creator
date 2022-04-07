@@ -1,3 +1,12 @@
 .vscode
 website/__pycache__
 website/database.db
+.DS_Store
+website/__pycache__/
+freq_lists.db
+geckodriver.log
+__pycache__
+website/required_files/5_words_Japanese_to_English.apkg
+website/required_files/geckodriver
+freq_lists.db
+website/database.db

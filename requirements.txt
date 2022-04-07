@@ -1,3 +1,14 @@
+selenium
+py_console
+genanki
+pysqlite3
+bs4 
+tqdm 
+sqlalchemy
+datetime
+genanki
+werkzeug
 flask
-Flask-SQLAlchemy
 flask-login
+flask-sqlalchemy
+pathlib;

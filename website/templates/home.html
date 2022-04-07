@@ -1,21 +1,30 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-%}
-<h1 align="center">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
-  <li class="list-group-item">
-    {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-  {% endfor %}
-</ul>
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block content %}
+<h1 align="center">Deck Creator</h1>
+<br><br />
 <form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
-  </div>
+    <label for="NL">Choose native language:</label>
+    <select name="NL" id="NL">
+        <option value="English">English</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Hebrew">Hebrew</option>
+        <option value="Arabic">Arabic</option>
+        <option value="German">German</option>
+        <option value="Italian">Italian</option>
+    </select>
+    <br />
+    <label for="TL">Choose target language:</label>
+    <select name="TL" id="TL">
+        <option value="Japanese">Japanese</option>
+    </select>
+    <br />
+    <label for="wordcount">Choose amount of words in the deck (between 1 and 50 words):</label>
+    <input type="number" id="wordcount" name="wordcount" min="1" max="50">
+    <br />
+    <div align="center">
+        <button name="action" value="submitButton" id="submitButton" type="submitButton" class="btn btn-primary">Create Deck</button>
+        <br><br />
+        <button name="action" value="learnButton" id="learnButton" type="learnButton" class="btn btn-primary">learn</button>
+    </div>
 </form>
 {% endblock %}
