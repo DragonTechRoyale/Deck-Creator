@@ -35,25 +35,26 @@ def home():
                     if message == err_msg:
                         utils.display_error(err_msg)
                     else:
-                        utils.display_success("redirecting to learn")
-                        return redirect(url_for('views.learn'))
-        elif request.form['action'] == 'learnButton':
+                        utils.display_success("redirecting to decks")
+                        return redirect(url_for('views.decks'))
+        elif request.form['action'] == 'decksButton':
             users_decks = Decks.query.filter_by(id=current_user.id).first()
             if users_decks:
-                return redirect(url_for('views.learn'))
+                console.info(f"views - home - url_for('views.decks'):\n{url_for('views.decks')}")
+                return redirect(url_for('views.decks'))
             else:
                 utils.display_error(__ERRORS["user_not_create_deck"])
     return render_template("home.html", user=current_user)
         
-@views.route('/learn')
+@views.route('/decks')
 @login_required
-def learn():
+def decks():
     title = "Decks:"
-    return render_template("learn.html", user=current_user, title=title)
+    return render_template("decks.html", user=current_user, title=title)
 
 @views.route('/data')
 @login_required
-def decks():
+def decks_data():
     deck_titles = []
     for item in Decks.query.filter_by(user_id=current_user.id):
         deck_titles.append(item.deck_name.replace('_','-'))

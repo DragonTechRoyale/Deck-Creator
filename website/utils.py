@@ -7,7 +7,7 @@ messages = {
         "no_word_count_error" : "place a number in the amount of words",
         "word_count_error" : "Word count is too big or low",
         "lang_not_supported" : "One of the languages is not supported (this error shouldn\'t happen)",
-        "user_not_create_deck" : "You haven't craeted any decks to learn yet. Click the \"Create Deck\" button to create a deck"
+        "user_not_create_deck" : "You haven't created any decks to learn yet. Click the \"Create Deck\" button to create a deck"
     },
     "warns" : {
         "window_closed" : "create_deck() - Window was closed while making the database\n(the database was still created succesfully, just with less items)"

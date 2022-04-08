@@ -1,4 +1,4 @@
-import genanki # There's a wild story that in earlier commits of this code on a private repo this app could generate Anki decks 👀
+import genanki 
 import pathlib;
 import os
 import urllib.request
@@ -99,3 +99,55 @@ class CreateDeck():
             msg = success_msg
             translator.exit()
         return msg
+
+
+class ConvertDeck():
+    deck_name = ""
+
+
+    def __init__(self, deck_name) -> None:
+        # gets deck name from the query (with _'s instead of spaces)
+        self.deck_name = deck_name
+        
+        
+    def CreateAnkiDeck(self):
+        # convert the current deck to an Anki deck
+        deck = Decks.query.filter_by(id=current_user.id, deck_name=self.deck_name).first()
+        NL = Cards.query.filter_by(id=current_user.id, deck_id=deck.id).first().NL
+        TL = self.deck_name.split('_')[0]
+        my_deck = genanki.Deck(
+        1607392318,
+        self.deck_name.replace('_', ' '))
+        counter = 1
+        
+        # Adding cards to the deck
+        for Card in Cards.query.filter_by(id=current_user.id, deck_id=deck.id):   
+            my_model = genanki.Model(
+            1607392318,
+            f'{NL} to {TL}',
+            fields=[
+                {'name': 'Question'},
+                {'name': 'Answer'},
+            ],
+            templates=[
+                {
+                'name': f'Card {counter}',
+                'qfmt': '{{Question}}',
+                'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}',
+                },
+            ])  
+               
+            try:
+                my_note = genanki.Note(
+                model=my_model,
+                fields=[Card.TL_word, Card.NL_word]
+                )
+                my_deck.add_note(my_note)
+                console.info(f"added card {Card.TL_word} to {Card.NL_word}")
+                counter = counter + 1 
+            except Exception as e:
+                console.warn(f"ConvertDeck() - error while creating deck:\n{e}")
+                break
+            
+        genanki.Package(my_deck).write_to_file(f'{self.deck_name}.apkg')
+        console.success(f"ConvertDeck() - Successfully created Anki deck!")
