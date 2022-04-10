@@ -114,9 +114,12 @@ def get_card_front(data):
             d1 = datetime.date(this_year, this_month, this_day)
             delta = d1 - d0
             
-            if delta.days == tmp.interval:
-                card = tmp
-                card.is_recalled = 0
+            card = tmp
+            card.is_recalled = 0
+            if delta.days != tmp.interval:
+                # if user skipped a day he needs to re-learn the card 
+                card.date = datetime.datetime.now().strftime("%x")
+                card.interval = 0
         elif tmp.interval == 0:
             card = tmp
             card.is_recalled = 0
