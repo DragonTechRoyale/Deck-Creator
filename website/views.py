@@ -3,7 +3,7 @@ import datetime
 from py_console import console
 from flask import Blueprint, jsonify, render_template, request, jsonify, redirect, url_for
 from flask_login import login_required, current_user
-from sqlalchemy import desc, update
+from sqlalchemy import desc
 from . import db
 from . import CreateDeck
 from . import utils
@@ -98,7 +98,7 @@ def get_card_front(data):
     deck_name = json_data['deck_name'].replace(" ", "_")
     console.info(Decks.query.filter_by(deck_name=deck_name).first())
     deck_id = Decks.query.filter_by(deck_name=deck_name).first().id
-    cards = Cards.query.filter_by(user_id=current_user.id, deck_id=deck_id).order_by(desc(Cards.interval)) # TODO: reverse order
+    cards = Cards.query.filter_by(user_id=current_user.id, deck_id=deck_id).order_by(desc(Cards.interval)).order_by(desc(Cards.id))
     card = None
     for tmp in cards:
         if tmp.date != datetime.datetime.now().strftime("%x") and tmp.interval > 0:
