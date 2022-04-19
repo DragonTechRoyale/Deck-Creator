@@ -31,9 +31,8 @@ def home():
                     utils.display_error(__ERRORS["word_count_error"])
                 else:
                     message = deck_creator.create_deck(TL=target_lang, NL=native_lang, max_words=word_count)
-                    err_msg = __ERRORS["deck_exists"]
-                    if message == err_msg:
-                        utils.display_error(err_msg)
+                    if message == __ERRORS["deck_exists"] or __ERRORS["arabic_not_supported"]:
+                        utils.display_error(message)
                     else:
                         utils.display_success("redirecting to decks")
                         return redirect(url_for('views.decks'))
