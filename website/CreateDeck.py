@@ -91,8 +91,6 @@ class CreateDeck():
         return new_list
 
     def create_deck(self, TL, NL, max_words) -> str:
-        # TODO: create databases for freq lists to be local so deck creation will be faster
-        # arabic freq list (with meanings!): https://talkinarabic.com/arabic-words/
         deck_name = f"{TL}_to_{NL}_{max_words}_words"
         users_decks = Decks.query.filter_by(id=current_user.id, deck_name=deck_name).first()
         msg = ""
