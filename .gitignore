@@ -12,3 +12,5 @@ freq_lists.db
 website/database.db
 website/required_files/Arabic\ Words.html
 node_modules
+package-lock.json
+package.json

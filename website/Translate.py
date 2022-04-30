@@ -19,7 +19,7 @@ class Translate():
     def __init__(self, 
                 hide_window=True, 
                  __TRANSLATE_MAX = 2000,  # max characters I can supply to google translate through the url
-                __TRANSLATED_TEXT_XPATH = "/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[3]/c-wiz[2]/div[6]/div/div[1]/span[1]/span/span",
+                __TRANSLATED_TEXT_XPATH = "//span[@jsname = 'W297wb']",
                 __GECKODRIVER_PATH = f"{os.getcwd()}/website/required_files/geckodriver",
                 browser = None) -> None:
         self.__TRANSLATE_MAX = __TRANSLATE_MAX
