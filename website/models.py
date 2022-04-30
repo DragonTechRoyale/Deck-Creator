@@ -11,9 +11,9 @@ class User(db.Model, UserMixin):
 
 
 class Decks(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    deck_name = db.Column(db.String(10000), unique=True)
+    deck_name = db.Column(db.String(10000))
     cards = db.relationship('Cards')
 
 
