@@ -114,8 +114,6 @@ class CreateDeck():
             is_window_closed = False
             for i in tqdm (range(len(words_list)), desc="create_deck() - Adding words..."):
                 word = words_list[i]
-                #word = word.replace('<b>', '')
-                #word = word.replace('</b>', '')
                 translated_word = translator.translate(TL, NL, word)
                 if translated_word == None:
                     is_window_closed = True
