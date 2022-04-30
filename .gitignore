@@ -11,3 +11,4 @@ website/required_files/geckodriver
 freq_lists.db
 website/database.db
 website/required_files/Arabic\ Words.html
+node_modules

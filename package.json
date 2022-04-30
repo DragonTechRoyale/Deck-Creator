@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "sogou-ocr": "^0.0.1"
+  }
+}
