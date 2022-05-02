@@ -1,7 +1,6 @@
 selenium
 py_console
 genanki
-pysqlite3
 bs4 
 tqdm 
 sqlalchemy
