@@ -15,12 +15,6 @@ from .models import Cards
 from urllib.error import HTTPError
 
 class CreateDeck():
-    supported_langs = []
-
-
-    def __init__(self, supported_langs = ["Japanese", "English"]) -> None:
-        self.supported_langs = supported_langs
-         
     def get_freq_list(self, TL, max_words) -> list:
         if TL == "Japanese":
             request = urllib.request.Request('https://www.manythings.org/japanese/words/leeds/words.html', headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'})
