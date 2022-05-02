@@ -1,6 +1,5 @@
 selenium
 py_console
-genanki
 bs4 
 tqdm 
 sqlalchemy
