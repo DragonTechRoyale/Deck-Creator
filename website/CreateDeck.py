@@ -93,8 +93,6 @@ class CreateDeck():
             err_msg = utils.messages["errors"]["deck_exists"]
             msg = err_msg
         else:
-            utils.display_success(utils.messages["successes"]["making_deck"])
-
             words_list = self.get_freq_list(TL, max_words)
             if words_list == [utils.messages["errors"]["arabic_not_supported"]]:
                 return words_list[0]

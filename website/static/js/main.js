@@ -1,6 +1,6 @@
 $(document).ready(function() {
     localStorage.clear();
-
+    
     if (window.location.pathname == '/decks') {
         $.ajax({
             type: 'GET',

@@ -12,6 +12,7 @@ from .models import Cards
 
 
 __ERRORS = utils.messages["errors"]
+__SUCCESSES = utils.messages["successes"]
 views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
@@ -31,10 +32,10 @@ def home():
                     utils.display_error(__ERRORS["word_count_error"])
                 else:
                     message = deck_creator.create_deck(TL=target_lang, NL=native_lang, max_words=word_count)
-                    if message == __ERRORS["deck_exists"] or __ERRORS["arabic_not_supported"]:
+                    if message in __ERRORS:
                         utils.display_error(message)
                     else:
-                        utils.display_success("redirecting to decks")
+                        utils.display_success(message + " " + __SUCCESSES["deck_redirect"])
                         return redirect(url_for('views.decks'))
         elif request.form['action'] == 'decksButton':
             users_decks = Decks.query.filter_by(id=current_user.id).first()

@@ -14,8 +14,9 @@ messages = {
         "window_closed" : "create_deck() - Window was closed while making the database\n(the database was still created succesfully, just with less items)"
     },
     "successes" : {
-        "created_deck" : "successfully created deck",
-        "making_deck" : "making deck..."
+        "created_deck" : "successfully created deck!",
+        "making_deck" : "making deck...",
+        "deck_redirect" : "redirecting to decks"
     }
 }
 
