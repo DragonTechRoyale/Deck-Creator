@@ -152,3 +152,7 @@ def get_card_back(card_id):
     }
     console.info(my_data)
     return jsonify(my_data)
+
+@views.route('/help')
+def help():
+    return redirect("https://github.com/DragonTechRoyale/Deck-Creator")
